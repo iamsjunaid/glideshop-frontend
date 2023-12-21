@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoCloseOutline, IoBagHandleOutline, IoTrashOutline } from 'react-icons/io5'
 import { HiOutlinePlus, HiOutlineMinus } from 'react-icons/hi'
+import { BiUserCircle } from 'react-icons/bi'
 
 const Navbar = ({ cart, addToCart, deleteItemFromCart, clearCart, subTotal }) => {
   const [cartPopup, setCartPopup] = useState(false)
@@ -39,8 +40,11 @@ const Navbar = ({ cart, addToCart, deleteItemFromCart, clearCart, subTotal }) =>
               Stickers
             </Link>
           </nav>
-          <BsCart3 className="absolute top-8 right-4 md:static w-6 h-6 ml-2 cursor-pointer hover:text-[#9a4747]" onClick={handleCartPopup} />
-          <span className="bg-[#9a4747] rounded-full absolute top-6 right-2 sm:top-1 sm:-right-2 text-sm w-5 h-5 text-center text-white">{Object.keys(cart).length}</span>
+          <Link href="/login">
+            <BiUserCircle className="absolute left-4 top-12 md:static w-6 h-6 cursor-pointer hover:text-[#9a4747] " />
+          </Link>
+          <BsCart3 className="absolute top-12 right-4 md:static w-6 h-6 ml-2 cursor-pointer hover:text-[#9a4747]" onClick={handleCartPopup} />
+          <span className="bg-[#9a4747] rounded-full absolute top-10 right-2 sm:top-1 sm:-right-2 text-sm w-5 h-5 text-center text-white">{Object.keys(cart).length}</span>
         </div>
       </header>
       {cartPopup && (
@@ -73,7 +77,7 @@ const Navbar = ({ cart, addToCart, deleteItemFromCart, clearCart, subTotal }) =>
                 )
               })}
             </ol>
-            <div className="flex gap-2 w-1/2 mt-8">
+            <div className="flex gap-2 sm:w-1/2 mt-8">
               <button className="flex items-center mx-auto border-solid border-[#9a4747] border-2 h-fit py-2 px-8 text-[#9a4747] focus:outline-none hover:underline rounded text-lg" onClick={clearCart} >Clear<IoTrashOutline className="text-xl" /></button>
               <Link href={'/checkout'}>
                 <button className="flex items-center mx-auto text-white bg-[#9a4747] py-2 px-8 focus:outline-none hover:underline rounded text-lg">Checkout<IoBagHandleOutline className="text-xl" /></button>
